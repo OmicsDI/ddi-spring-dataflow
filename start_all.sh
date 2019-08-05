@@ -1,0 +1,11 @@
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/rabbitmq/ --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/mysql/ --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/server/server-roles.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/server/server-rolebinding.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/server/service-account.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/skipper/skipper-config-rabbit.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/skipper/skipper-deployment.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/skipper/skipper-svc.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/server/server-config.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/server/server-svc.yaml --namespace=dataflow
+kubectl --kubeconfig /Users/tvu/Documents/Scripts/kubernetes/kube.yml create -f src/kubernetes/server/server-deployment.yaml --namespace=dataflow
