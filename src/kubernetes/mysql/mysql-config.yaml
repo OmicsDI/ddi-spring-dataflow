@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+  labels:
+    app: mysql
+data:
+  my.cnf: |-
+    [mysqld_safe]
+    nice 				= -15
+
+    [mysqld]
+    max_binlog_size 		= 256M	  #max size for binlog before rolling
+    expire_logs_days 		= 1	#binlog files older than this will be purged
+
+    ## Per-Thread Buffers * (max_connections) = total per-thread mem usage
+    thread_stack 			= 256K	  #default: 32bit: 192K, 64bit: 256K
+    sort_buffer_size 		= 1M	  #default: 2M, larger may cause perf issues
+    read_buffer_size 		= 1M	  #default: 128K, change in increments of 4K
+    read_rnd_buffer_size 	        = 1M	  #default: 256K				
+    join_buffer_size 		= 1M	  #default: 128K
+    binlog_cache_size 		= 64K	  #default: 32K, size of buffer to hold TX queries
+
+    ## Query Cache
+    query_cache_size 		= 32M     #global buffer
+    query_cache_limit 		= 512K	  #max query result size to put in cache
+
+    ## Connections
+    max_connections 		= 2000	  #multiplier for memory usage via per-thread buffers
+    max_connect_errors 		= 100	  #default: 10
+    concurrent_insert		= 2	      #default: 1, 2: enable insert for all instances
+    connect_timeout			= 30	  #default -5.1.22: 5, +5.1.22: 10
+
+    # set tmpdir to a ramdisk?
+    #tmpdir                         = /data/mysql-tmp0:/data/mysql-tmp1
+
+    ## Thread settings
+    thread_concurrency		= 0  	#recommend 2x CPU cores [0 create as many as needed]
+    thread_cache_size		= 100 	#recommend 5% of max_connections
+

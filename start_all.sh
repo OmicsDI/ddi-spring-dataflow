@@ -1,5 +1,9 @@
 kubectl create -f src/kubernetes/rabbitmq/ --namespace=dataflow
-kubectl create -f src/kubernetes/mysql/ --namespace=dataflow
+kubectl create -f src/kubernetes/mysql/mysql-config.yaml --namespace=dataflow
+kubectl create -f src/kubernetes/mysql/mysql-pvc.yaml --namespace=dataflow
+kubectl create -f src/kubernetes/mysql/mysql-secrets.yaml --namespace=dataflow
+kubectl create -f src/kubernetes/mysql/mysql-deployment.yaml --namespace=dataflow
+kubectl create -f src/kubernetes/mysql/mysql-svc.yaml --namespace=dataflow
 kubectl create -f src/kubernetes/server/server-roles.yaml --namespace=dataflow
 kubectl create -f src/kubernetes/server/server-rolebinding.yaml --namespace=dataflow
 kubectl create -f src/kubernetes/server/service-account.yaml --namespace=dataflow
